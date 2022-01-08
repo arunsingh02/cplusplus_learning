@@ -13,7 +13,7 @@ class Complex {
         cout << "Standard Ctor : ";
         print();
       }
-    Complex(const Complex& c):
+    Complex(const Complex& c): // Copy Constructor
       re_(c.re_), im_(c.im_)
       {
         cout << "Copy Ctor: ";
