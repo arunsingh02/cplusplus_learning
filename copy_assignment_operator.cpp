@@ -21,11 +21,14 @@ public:
   // Copy Assignment Operator
   String& operator=(const String& b) // return value is String& for chain assignment
   {
-    // str_ = strdup(b.str_);
-    str_ = strdup("Ravi Singh");
-    len_ = b.len_;
-    cout << "Copy assignment operator \n";
-    print();
+    if (this != &b){ // safe code for self copy like s1 = s1.
+      free(str_);
+      // str_ = strdup(b.str_);
+      str_ = strdup("Ravi Singh");
+      len_ = b.len_;
+      cout << "Copy assignment operator \n";
+      print();
+    }
     return *this; // required
   }
 
