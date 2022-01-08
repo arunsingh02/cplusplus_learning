@@ -19,9 +19,10 @@ public:
       cout << "String Copy Constructor Called." << endl;
     }
   // Copy Assignment Operator
-  String& operator=(const String& b)
+  String& operator=(const String& b) // return value is String& for chain assignment
   {
-    str_ = strdup(b.str_);
+    // str_ = strdup(b.str_);
+    str_ = strdup("Ravi Singh");
     len_ = b.len_;
     cout << "Copy assignment operator \n";
     print();
@@ -47,9 +48,11 @@ int main(int argc, char const *argv[]) {
   str_to_caps(s); // copy Ctor
   // S1 is new object and copy from existing obj s.
   String s1(s);
+  String s2(s1);
   // Both object already exist
-  s1 = s; // copy assignment operator
-
+  s1 = s; // copy assignment operator (No return type in operator assignment will be fine)
+  s = s1 = s2; // copy assignment chain s1 = ( s1 = s2 )
+  cout << "s1 object : "; s1.print();
   return 0;
 }
 
@@ -62,8 +65,15 @@ Str to upper : String is ARUN SINGH and its length is 10.
 
 String Dtor Called
 String Copy Constructor Called.
+String Copy Constructor Called.
 Copy assignment operator
-String is Arun Singh and its length is 10.
+String is Ravi Singh and its length is 10.
+Copy assignment operator
+String is Ravi Singh and its length is 10.
+Copy assignment operator
+String is Ravi Singh and its length is 10.
+s1 object : String is Ravi Singh and its length is 10.
+String Dtor Called
 String Dtor Called
 String Dtor Called
 */
