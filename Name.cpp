@@ -20,3 +20,11 @@ int main(int argc, char const *argv[]) {
   name.print();
   return 0;
 }
+
+/*
+String Ctor : String = Arun , length = 4
+
+String Ctor : String = Singh , length = 5
+
+My Name is Arun Singh.
+*/
