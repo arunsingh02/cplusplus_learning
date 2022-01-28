@@ -1,13 +1,13 @@
 [Unit]
-Description=SolidFire Vasa Provider
-ConditionPathExists=/sf/packages/solidfire-vasa-2.10.102/sf_cluster.conf
+Description=doing testing
+ConditionPathExists=/aa/package/new-build-vasa-2.10.102/dd_data.conf
 
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/sf
+WorkingDirectory=/aa
 Restart=always
-ExecStart=/opt/icedtea-bin-3.13.0/bin/java             -javaagent:/sf/packages/solidfire-vasa-2.10.102/solidfire-vasa-2.10.102-all-2.10.102.jar             -jar /sf/packages/solidfire-vasa-2.10.102/solidfire-vasa-2.10.102-all-2.10.102.jar             --context-path vasa/services/vasaService             --vasa-home /sf/packages/solidfire-vasa-2.10.102
+ExecStart=/opt/icedtea-bin-3.13.0/bin/java            
 
 [Install]
 WantedBy=multi-user.target

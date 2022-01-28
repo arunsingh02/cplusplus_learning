@@ -40,7 +40,7 @@ string CollectVasaProviderVersion(const string result){
 		}
 	}
 
-  std::string delimiter = "solidfire-vasa";
+  std::string delimiter = "build-vasa";
   std::string vasa_provider_version;
 
   for ( int i = 0; i < vasa_provider_info_list.size(); ++i ) {
