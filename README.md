@@ -8,10 +8,17 @@ Ex.
 ```
 
 ## Run exe file
+### Mac
 ```
 ./<exe-file-name>
 Ex.
   ./test
+```
+### Windows
+```
+<exe-file-name>
+Ex.
+  test.exe
 ```
 
 ## Some important links for c++ learning
@@ -22,4 +29,9 @@ https://www.micc.unifi.it/bertini/download/programmazione/TICPP-2nd-ed-Vol-one-p
 https://www.youtube.com/watch?v=efXI8anQwXo&list=PLEAYkSg4uSQ2qzihjdDEseWrrY1DyxH9P
 https://www.youtube.com/watch?v=18c3MTX0PK0&list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb
 https://www.cplusplus.com/articles/1UqpX9L8/
+```
+
+## Install g++ in Windows 10
+```
+http://www.codebind.com/cprogramming/install-mingw-windows-10-gcc/
 ```
