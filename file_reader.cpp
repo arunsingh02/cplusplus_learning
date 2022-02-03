@@ -2,13 +2,13 @@
 #include <stdexcept>
 #include <stdio.h>
 #include <string>
-#include<vector>
+#include <vector>
 
 using namespace std;
 
-std::string exec(const char* cmd) {
+string exec(const char* cmd) {
     char buffer[128];
-    std::string result = "";
+    string result = "";
     FILE* pipe = popen(cmd, "r");
     if (!pipe) throw std::runtime_error("popen() failed!");
     try {
@@ -23,41 +23,39 @@ std::string exec(const char* cmd) {
     return result;
 }
 
-string CollectVasaProviderVersion(const string result){
-	std::vector<string> vasa_provider_info_list;
-	std::string temp = "";
+vector<string> text_spliter(const string data, string delimiter, int limit = 0){
+  vector<string> data_list;
+  string temp = "";
   int line_counter = 0;
 
-	for ( int i = 0; i < result.length(); ++i ){
-    if (line_counter > 2) break;
-		if ( result[i] == '\n' ) {
-			vasa_provider_info_list.push_back(temp);
+	for ( int i = 0; i < data.length(); ++i ){
+    if (limit && line_counter > limit) break;
+    string ch;
+    ch.push_back(data[i]);
+		if ( ch == delimiter ) {
+			data_list.push_back(temp);
 			temp = "";
       line_counter++;
 		}
 		else {
-			temp.push_back(result[i]);
+			temp.push_back(data[i]);
 		}
 	}
+  return data_list;
+}
 
-  std::string delimiter = "build-vasa";
-  std::string vasa_provider_version;
+string CollectVasaProviderVersion(const string result){
+  vector<string> vasa_provider_info_list = text_spliter(result, "\n", 2);
 
-  for ( int i = 0; i < vasa_provider_info_list.size(); ++i ) {
-    std::string line = vasa_provider_info_list[i];
+  string vasa_provider_version_line = vasa_provider_info_list[2];
 
-    std::size_t found = line.find(delimiter);
-    if (found != std::string::npos ) {
-      int start = found + delimiter.length() + 1;
-      vasa_provider_version = line.substr(start, 8);
-      break;
-    }
-  }
-	return vasa_provider_version;
+  vector<string> vasa_provider_version_list = text_spliter(vasa_provider_version_line, "/");
+
+	return vasa_provider_version_list[3];
 }
 
 int main(int argc, char const *argv[]) {
-  std::string result = exec("cat testfile.service");
+  string result = exec("cat testfile.service");
 
   cout << CollectVasaProviderVersion(result) << endl;
 
