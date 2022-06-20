@@ -61,7 +61,3 @@ int main(int argc, char const *argv[]) {
 
   return 0;
 }
-
-/*
-new-build-vasa-2.10.102
-*/
